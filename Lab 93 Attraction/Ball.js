@@ -45,7 +45,7 @@ class Ball{
         this.acc.mult(0,1)
       }
       if (distToMainBall<250){
-        this.acc = p5.Vector(this.loc, other.loc);
+        this.acc = p5.Vector.sub(this.loc, other.loc);
         this.acc.normalize();
         this.acc.mult(0.5);
     vel.limit(5)
