@@ -2,12 +2,13 @@
 
 class Ball{
   constructor(x, y, dx, dy, id){
+    this.id =id
     this.loc = createVector(x, y);
     this.vel = createVector(dx,dy);
     this.acc = createVector(0, 1)
     this.clr = color(random(255),random(255),random(255))
     this.mainBall = createVector(random(200,600),random(200,600))
-    this.id = id
+
   }
 
   run(){
@@ -29,41 +30,38 @@ class Ball{
     if(this.loc.y>height){
       this.vel.y = -this.vel.y
     }
-    if(this.loc.y>height+20){
-      this.reset()
-    }
   }
   update(){
-    this.vel.add(this.acc)
-    this.loc.add(this.vel)
+  //  this.vel.add(this.acc)
+  //  this.loc.add(this.vel)
     var distToMainBall;
     if (this.id>=0){
-      distToMainBall = this.loc.dist(this.mainBall.loc)
+      distToMainBall = this.loc.dist(mainBall.loc)
       if(distToMainBall < 250){
-        this.acc = p5.Vector.sub(this.mainBall.loc, this.loc);
+        this.acc = p5.Vector.sub(mainBall.loc, this.loc);
         this.acc.normalize();
         this.acc.mult(0,1)
       }
       if (distToMainBall<250){
-        this.acc = p5.Vector.sub(this.loc, other.loc);
+        this.acc = p5.Vector.sub(this.loc, mainBall.loc);
         this.acc.normalize();
         this.acc.mult(0.5);
-    vel.limit(5)
+        this.vel.limit(3)
       }
     }
   }
   render(){
-    if (id>=0){
+    if (this.id>=0){
       fill(this.clr);
       ellipse(this.loc.x, this.loc.y, 20,20)
-      id++
+      this.id++
     }
 
   }
   mainBall(){
     if(id<0){
       fill(250,250,250)
-      ellipse(this.mainBall.x, this.mainBall.y)
+      ellipse(mainBall.x, mainBall.y)
       id++
     }
 

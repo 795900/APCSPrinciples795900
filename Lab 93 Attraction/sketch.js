@@ -12,17 +12,19 @@ function setup() {
 }
 
 function draw() {
-  background(20,20,20,50);
+  background(20,20,20);
   runBalls();
 }
 
 function loadBalls(n){
-  for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width), random(height), random(-1,1), random(-1,1),-1)
+  mainBall = new Ball (200, 200, random(-1,1), random(-1,1), -1)
+    for(var i = 0; i < n; i++){
+      balls[i] = new Ball(random(width), random(height), random(-1,1), random(-1,1),i)
   }
 }
 
 function runBalls(){
+  mainBall.run();
   for (var i = 0; i < balls.length; i++){
     balls[i].run();
   }
