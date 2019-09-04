@@ -7,11 +7,12 @@ class Ball{
     this.vel = createVector(dx,dy);
     this.acc = createVector(0, 1)
     this.clr = color(random(255),random(255),random(255))
-    this.mainBall = createVector(random(200,600),random(200,600))
+    this.MBall = createVector(random(200,600),random(200,600))
 
   }
 
   run(){
+    this.mainBall();
     this.checkEdges();
     this.update();
     this.render();
@@ -32,22 +33,23 @@ class Ball{
     }
   }
   update(){
-  //  this.vel.add(this.acc)
-  //  this.loc.add(this.vel)
+
     var distToMainBall;
     if (this.id>=0){
       distToMainBall = this.loc.dist(mainBall.loc)
       if(distToMainBall < 250){
         this.acc = p5.Vector.sub(mainBall.loc, this.loc);
         this.acc.normalize();
-        this.acc.mult(0,1)
+        this.acc.mult(0.1)
       }
-      if (distToMainBall<250){
+      if (distToMainBall<150){
         this.acc = p5.Vector.sub(this.loc, mainBall.loc);
         this.acc.normalize();
         this.acc.mult(0.5);
         this.vel.limit(3)
       }
+      this.vel.add(this.acc)
+      this.loc.add(this.vel)
     }
   }
   render(){
@@ -59,11 +61,10 @@ class Ball{
 
   }
   mainBall(){
-    if(id<0){
-      fill(250,250,250)
-      ellipse(mainBall.x, mainBall.y)
-      id++
+    if(this.id<0){
+      fill(250,0,0)
+      ellipse(this.MBall.x, this.MBall.y, 400, 400)
+      this.id++
     }
-
   }
 }
