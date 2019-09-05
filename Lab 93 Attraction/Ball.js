@@ -5,9 +5,8 @@ class Ball{
     this.id = id
     this.loc = createVector(x, y);
     this.vel = createVector(dx,dy);
-    this.acc = createVector(0, 1)
     this.clr = color(random(255),random(255),random(255))
-    this.mainBall = createVector(x, y)
+  //  this.mainBall = createVector(x, y)
 
   }
 
@@ -30,11 +29,13 @@ class Ball{
     if(this.loc.y>height){
       this.vel.y = -this.vel.y
     }
+
+
   }
   update(){
 
     var distToMainBall;
-    if (this.id>=0){
+    if (this.id>=0){ //Attract and repel
       distToMainBall = this.loc.dist(mainBall.loc)
       if(distToMainBall < 250){
         this.acc = p5.Vector.sub(mainBall.loc, this.loc);
@@ -42,7 +43,7 @@ class Ball{
         this.acc.mult(0.1)
       }
       if (distToMainBall<150){
-        this.acc = p5.Vector.sub(this.loc, mainBall.loc);
+        this.acc = p5.Vector.sub(this.loc, mainBall.loc );
         this.acc.normalize();
         this.acc.mult(0.5);
         this.vel.limit(3)
@@ -50,6 +51,9 @@ class Ball{
       this.vel.add(this.acc)
       this.loc.add(this.vel)
     }
+
+
+
   }
   render(){
     if (this.id>=0){
@@ -59,7 +63,8 @@ class Ball{
     }
     if(this.id<0){
       fill(250,0,0)
-      ellipse(this.mainBall.x, this.mainBall.y, 50, 50)
+      ellipse(this.loc.x, this.loc.y, 50, 50)
+      this.loc.add(this.vel)
     }
   }
 
