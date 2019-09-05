@@ -2,17 +2,16 @@
 
 class Ball{
   constructor(x, y, dx, dy, id){
-    this.id =id
+    this.id = id
     this.loc = createVector(x, y);
     this.vel = createVector(dx,dy);
     this.acc = createVector(0, 1)
     this.clr = color(random(255),random(255),random(255))
-    this.MBall = createVector(random(200,600),random(200,600))
+    this.mainBall = createVector(x, y)
 
   }
 
   run(){
-    this.mainBall();
     this.checkEdges();
     this.update();
     this.render();
@@ -58,13 +57,10 @@ class Ball{
       ellipse(this.loc.x, this.loc.y, 20,20)
       this.id++
     }
-
-  }
-  mainBall(){
     if(this.id<0){
       fill(250,0,0)
-      ellipse(this.MBall.x, this.MBall.y, 400, 400)
-      this.id++
+      ellipse(this.mainBall.x, this.mainBall.y, 50, 50)
     }
   }
+
 }

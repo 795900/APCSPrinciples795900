@@ -3,6 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var balls = []
+var mainBall
 
 function setup() {
   var cnv = createCanvas(800,800);
@@ -19,7 +20,7 @@ function draw() {
 function loadBalls(n){
   mainBall = new Ball (width/2, height/2, random(-1,1), random(-1,1), -1)
     for(var i = 0; i < n; i++){
-      balls[i] = new Ball(random(width), random(height), random(-1,1), random(-1,1),i)
+      balls[i] = new Ball(random(width), random(height), random(-1,1), random(-1,1),0)
   }
 }
 
