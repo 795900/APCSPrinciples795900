@@ -32,7 +32,7 @@ class ship{
 
   render(){
     fill(this.clr)
-    this.angle=this.angle + 0.1
+    this.angle = mainBall.loc.heading()
     push();
     translate(this.loc.x, this.loc.y);
     rotate(this.angle);
