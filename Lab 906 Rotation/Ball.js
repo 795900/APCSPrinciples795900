@@ -1,8 +1,8 @@
 
 
 class Ball{
-  constructor(x, y, dx, dy, id){
-    this.id = id
+  constructor(x, y, dx, dy){
+    //this.id = id
     this.loc = createVector(x, y);
     this.vel = createVector(dx,dy);
     this.clr = color(random(255),random(255),random(255))
@@ -34,38 +34,38 @@ class Ball{
   }
   update(){
 
-    var distToMainBall;
-    if (this.id>=0){ //Attract and repel
-      distToMainBall = this.loc.dist(mainBall.loc)
-      if(distToMainBall < 250){
-        this.acc = p5.Vector.sub(mainBall.loc, this.loc);
-        this.acc.normalize();
-        this.acc.mult(0.1)
-      }
-      if (distToMainBall<150){
-        this.acc = p5.Vector.sub(this.loc, mainBall.loc );
-        this.acc.normalize();
-        this.acc.mult(0.5);
-        this.vel.limit(3)
-      }
+    //var distToMainBall;
+    // if (this.id>=0){ //Attract and repel
+    //   distToMainBall = this.loc.dist(mainBall.loc)
+    //   if(distToMainBall < 250){
+    //     this.acc = p5.Vector.sub(mainBall.loc, this.loc);
+    //     this.acc.normalize();
+    //     this.acc.mult(0.1)
+    //   }
+    //   if (distToMainBall<150){
+    //     this.acc = p5.Vector.sub(this.loc, mainBall.loc );
+    //     this.acc.normalize();
+    //     this.acc.mult(0.5);
+    //     this.vel.limit(3)
+    //   }
       this.vel.add(this.acc)
       this.loc.add(this.vel)
     }
 
 
 
-  }
+
   render(){
-    if (this.id>=0){
-      fill(this.clr);
-      ellipse(this.loc.x, this.loc.y, 20,20)
-      this.id++
-    }
-    if(this.id<0){
+    // if (this.id>=0){
+    //   fill(this.clr);
+    //   ellipse(this.loc.x, this.loc.y, 20,20)
+    //   this.id++
+    // }
+    // if(this.id<0){
       fill(250,0,0)
       ellipse(this.loc.x, this.loc.y, 50, 50)
       this.loc.add(this.vel)
-    }
-  }
 
+
+}
 }
