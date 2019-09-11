@@ -1,5 +1,5 @@
 class ship{
-  constructor (x,y,dx,dy    ){
+  constructor (x,y,dx,dy){
     this.loc = createVector (x,y);
     this.vel = createVector (dx,dy);
     this.angle = 0;
@@ -12,16 +12,16 @@ class ship{
   }
 
   checkEdges(){
-    if (this.loc.x = 0) {
-      this.loc.x = width;
-    }
-    if (this.loc.x = width) {
+     if (this.loc.x < 0) {
+       this.loc.x = width;
+     }
+    if (this.loc.x > width) {
       this.loc.x = 0;
     }
-    if (this.loc.y = 0) {
+    if (this.loc.y < 0) {
       this.loc.y = height;
     }
-    if (this.loc.y = height) {
+    if (this.loc.y > height) {
       this.loc.y = 0;
     }
   }
@@ -32,10 +32,11 @@ class ship{
 
   render(){
     fill(this.clr)
+    this.angle=this.angle+0.05
     push();
-    translate(this.loc.x,this.loc.y);
+    translate(this.loc.x, this.loc.y);
     rotate(this.angle);
-    triangle(this.loc.x-5,this.loc.y+8,this.loc.x+5, this.loc.y+8, this.loc.x, this.loc.y-8);
+    triangle(-5,8,5,8,0,-8);
     pop();
   }
 
