@@ -19,7 +19,7 @@ function loadShips(n){
   }
 }
 function loadBall(){
-    mainBall = new Ball(random(width), random(height), random(-3,3), random(-3,3))
+    mainBall = new Ball(random(width), random(height), random(-8,8), random(-8,8))
   }
 
 

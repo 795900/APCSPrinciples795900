@@ -13,26 +13,41 @@ class ship{
 
   checkEdges(){
      if (this.loc.x < 0) {
-       this.loc.x = width;
+       this.vel.x = -this.vel.x;
      }
     if (this.loc.x > width) {
-      this.loc.x = 0;
+      this.vel.x = -this.vel.x;
     }
     if (this.loc.y < 0) {
-      this.loc.y = height;
+      this.vel.y = -this.vel.y;
     }
     if (this.loc.y > height) {
-      this.loc.y = 0;
+      this.vel.y = -this.vel.y;
     }
   }
 
   update(){
+    var distToMainBall;
+      distToMainBall = this.loc.dist(mainBall.loc)
+      if(distToMainBall < 250){
+        this.acc = p5.Vector.sub(mainBall.loc, this.loc);
+        this.acc.normalize();
+        this.acc.mult(0.1)
+      }
+      if (distToMainBall<150){
+        this.acc = p5.Vector.sub(this.loc, mainBall.loc );
+        this.acc.normalize();
+        this.acc.mult(0.3);
+        this.vel.limit(3)
+      }
+    this.vel.add(this.acc)
     this.loc.add(this.vel);
+    this.vel.limit(3)
   }
 
   render(){
     fill(this.clr)
-    this.angle = mainBall.loc.heading()
+    this.angle = this.vel.heading()
     push();
     translate(this.loc.x, this.loc.y);
     rotate(this.angle);
