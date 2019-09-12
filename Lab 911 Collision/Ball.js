@@ -28,10 +28,6 @@ class Ball{
     if(this.loc.y>height){
       this.vel.y = -this.vel.y
     }
-    if(this.loc.y===height-100 && mouseX<=this.loc.x<=mouseX+200){
-      this.vel.y = -this.vel.y
-    }
-
 
   }
   update(){
