@@ -19,11 +19,11 @@ function draw() {
 }
 
 function loadThings(){
-ball = new Ball(random(width), random(height), random(-3,3), random(-3,3))
 paddle = new Paddle (0,height-200,200,50)
+ball = new Ball(random(width), random(height-200), random(-10,10), random(-10,10))
 }
 
 function runThings(){
-ball.run();
 paddle.run();
+ball.run();
   }
