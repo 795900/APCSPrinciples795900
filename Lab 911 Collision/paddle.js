@@ -3,7 +3,6 @@ class Paddle{
     this.loc = createVector(x, y);
     this.w = w;
     this.h = h
-  //  this.mainBall = createVector(x, y)
 
   }
 
