@@ -1,12 +1,11 @@
 
 
 class Ball{
-  constructor(x, y, dx, dy,n){
+  constructor(x, y, dx, dy){
     this.loc = createVector(x, y);
     this.vel = createVector(dx,dy);
-    this.clr = color(random(255),random(255),random(255))
-  //  this.mainBall = createVector(x, y)
-
+    this.acc = createVector(0,1);
+    this.clr = color(random(255),random(255),random(255));
   }
 
   run(){
@@ -34,7 +33,9 @@ class Ball{
 
   }
   update(){
+      this.vel.add(this.acc)
       this.loc.add(this.vel)
+      this.vel.limit()
     }
 
   render(){
