@@ -27,7 +27,7 @@ function runPaddle(){
 
 function loadBalls(n){
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width), random(height), random(-1,1), random(-1,1))
+    balls[i] = new Ball(random(width), random(height-500), random(-1,1), random(-1,1))
   }
 }
 
