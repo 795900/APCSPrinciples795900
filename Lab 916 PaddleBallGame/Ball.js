@@ -4,7 +4,6 @@ class Ball{
   constructor(x, y, dx, dy){
     this.loc = createVector(x, y);
     this.vel = createVector(dx,dy);
-    this.acc = createVector(0,.3);
     this.clr = color(random(255),random(255),random(255));
   }
 
@@ -27,15 +26,13 @@ class Ball{
     if(this.loc.y>height){
       this.vel.y = -this.vel.y
     }
-    // if(this.loc.y>paddle.loc.y&&paddle.loc.x<this.loc.x&&this.loc.x<paddle.loc.x+200){
-    //   this.vel.y = -this.vel.y
-    // }
+     if(this.loc.y>paddle.loc.y&&paddle.loc.x<this.loc.x&&this.loc.x<paddle.loc.x+200&&this.vel.y>0&&this.loc.y<paddle.loc.y+50){
+       this.vel.y = -this.vel.y
+     }
 
   }
   update(){
-      this.vel.add(this.acc)
       this.loc.add(this.vel)
-      this.vel.limit()
     }
 
   render(){
