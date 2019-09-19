@@ -28,6 +28,7 @@ class Ball{
     }
      if(this.loc.y>paddle.loc.y&&paddle.loc.x<this.loc.x&&this.loc.x<paddle.loc.x+200&&this.vel.y>0&&this.loc.y<paddle.loc.y+50){
        this.vel.y = -this.vel.y
+       score++
      }
 
   }
