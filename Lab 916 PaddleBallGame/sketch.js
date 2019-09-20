@@ -4,6 +4,8 @@ var balls = []
 var paddle;
 var score = 0
 var screenNumber = 1
+var dx
+var dy
 function setup() {
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
@@ -15,7 +17,12 @@ function draw() {
   if (screenNumber = 1){
     screen1()
   }
-  background(20,20,20,100)
+  if (screenNumber = 2){
+    screen2()
+  }
+  }
+
+  background(20,20,20,100);
   if (screenNumber === 2){
     runPaddle()
     runBalls()
@@ -23,13 +30,12 @@ function draw() {
     textSize(32)
     text(score,50,50)
   }
-
-}
 function easyMedHard(words,x,y){
   fill(0,0,0)
   textSize(16)
   text(words,x,y)
 }
+
 function screen1(){
   fill(0,255,0)
   rect(100,100,100,100)
@@ -40,7 +46,14 @@ function screen1(){
   fill(255,0,0)
   rect(500,500,100,100)
   easyMedHard("Hard",525,550)
-}
+  rect(700,100,100,100)
+  easyMedHard("Instructions",725,150)
+  for (screenNumber = 1){
+    if (mouseX>100 && mouseX<200 && mouseY>100 && mouseY<200 && mouseClicked()){
+      screenNumber = 2
+    }
+  }
+  }
 
 
 function loadPaddle(){
