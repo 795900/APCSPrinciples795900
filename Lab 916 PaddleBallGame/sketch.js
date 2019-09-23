@@ -3,9 +3,8 @@
 var balls = []
 var paddle;
 var score = 0
+var health = 10
 var screenNumber = 1
-var dx
-var dy
 function setup() {
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
@@ -14,6 +13,7 @@ function setup() {
 }
 
 function draw() {
+  background(20,20,20,100)
   if (screenNumber = 1){
     screen1()
   }
@@ -22,14 +22,6 @@ function draw() {
   }
   }
 
-  background(20,20,20,100);
-  if (screenNumber === 2){
-    runPaddle()
-    runBalls()
-    fill(250,0,0)
-    textSize(32)
-    text(score,50,50)
-  }
 function easyMedHard(words,x,y){
   fill(0,0,0)
   textSize(16)
@@ -48,13 +40,16 @@ function screen1(){
   easyMedHard("Hard",525,550)
   rect(700,100,100,100)
   easyMedHard("Instructions",725,150)
-  for (screenNumber = 1){
+  for (i = 1; i = screenNumber; i++){
     if (mouseX>100 && mouseX<200 && mouseY>100 && mouseY<200 && mouseClicked()){
-      screenNumber = 2
-    }
-  }
-  }
 
+    }
+    if(mouseX>300 && mouseX<400 && mouseY>300 && mouseY<400 && mouseClicked()){
+
+    }
+    screenNumber = 2
+  }
+}
 
 function loadPaddle(){
   paddle = new Paddle (0,height-200,200,50)
@@ -74,4 +69,17 @@ function runBalls(){
   for (var i = 0; i < balls.length; i++){
     balls[i].run()
   }
+}
+
+function screen2(){
+fill(250,0,0);
+textSize(32);
+text("Score "+score,50,50);
+text("Health"+health,50,50);
+runPaddle();
+runBalls();
+}
+
+function screen3(){
+
 }
