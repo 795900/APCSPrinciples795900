@@ -1,3 +1,5 @@
+//Harry Kraus
+9/25
 class Paddle{
   constructor(x, y, w, h){
     this.loc = createVector(x, y);
@@ -7,14 +9,10 @@ class Paddle{
   }
 
   run(){
-    this.checkEdges();
     this.update();
     this.render();
   }
 
-  checkEdges(){
-
-  }
   update(){
     var mouseLoc = createVector(mouseX,this.loc.y);
     this.loc = p5.Vector.lerp(this.loc,mouseLoc,.2)

@@ -1,4 +1,5 @@
-
+//Harry Kraus
+//9/25
 
 class Ball{
   constructor(x, y, dx, dy){

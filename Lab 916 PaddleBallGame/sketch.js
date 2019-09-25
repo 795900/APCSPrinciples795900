@@ -1,25 +1,27 @@
 //  Harry Kraus
 // 	8/29
-var balls = []
+var balls = [];
 var paddle;
-var score = 0
-var health = 10
-var screenNumber = 1
-var dx
-var velLimit
-var dy
+var score = 0;
+var health = 3;
+var screenNumber = 1;
+var velX
+var velY
+var velLimit;
+var btnEasy, btnMedium, btnHard;
 
 function setup() {
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
   loadPaddle();
   if (screenNumber === 1){
-    screen1()
+    makeButtons();
+    screen1();
 }
 }
 
 function draw() {
-  background(20,20,20,100)
+  background(250,250,250,100)
   if (screenNumber === 1){
     screen1()
   }
@@ -28,47 +30,38 @@ function draw() {
   }
   }
 
-function easyMedHard(words,x,y){
-  fill(0,0,0)
-  textSize(16)
-  text(words,x,y)
+function makeButtons(){
+  btnEasy = new Button (100,100,"Easy",0,250,0)
+  btnMedium = new Button (300,300,"Medium",255,255,0)
+  btnHard = new Button (500,500,"Hard",255,0,0)
 }
 
  function screen1(){
-  fill(0,255,0)
-  rect(100,100,100,100)
-  easyMedHard("Easy",125,150)
-  fill(255,255,0)
-  rect(300,300,100,100)
-  easyMedHard("Medium",325,350)
-  fill(255,0,0)
-  rect(500,500,100,100)
-  easyMedHard("Hard",525,550)
+    btnEasy.run();
+    btnMedium.run();
+    btnHard.run();
     if (mouseX>100 && mouseX<200 && mouseY>100 && mouseY<200 && mouseIsPressed){
       loadBalls(3)
-      dx = random(-3,3)
-      dy = random(-3,3)
-      velLimit = 3
+      velX = random(-3,3)
+      velY = random(-3,3)
       screenNumber++
     }
     if(mouseX>300 && mouseX<400 && mouseY>300 && mouseY<400 && mouseIsPressed){
       loadBalls(5)
-      dx = random(-5,5)
-      dy = random(-5,5)
-      velLimit = 5
+      velX = random(-3,3)
+      velY = random(-3,3)
       screenNumber++
     }
     if(mouseX>500 && mouseX<600 && mouseY>500 && mouseY<600 && mouseIsPressed){
       loadBalls(10)
-      dx = random(-10,10)
-      dy = random(-10,10)
-      velLimit = 10
+      velX = random(-1,1)
+      velY = random(-1,1)
       screenNumber++
     }
    }
 
 function loadPaddle(){
-   paddle = new Paddle (0,height-200,200,50)
+   paddle = new Paddle (0,height-150,100,50)
 }
 
 function runPaddle(){
@@ -77,7 +70,7 @@ function runPaddle(){
 
 function loadBalls(n){
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width), random(height-500), random(-20,20), random(-20,0))
+    balls[i] = new Ball(random(width), random(height-500), velX, velY)
   }
 }
 
