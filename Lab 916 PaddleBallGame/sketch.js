@@ -5,8 +5,8 @@ var paddle;
 var score = 0;
 var health = 3;
 var screenNumber = 1;
-var velX
-var velY
+var velX = 0
+var velY = 0
 var velLimit;
 var btnEasy, btnMedium, btnHard;
 
@@ -41,21 +41,21 @@ function makeButtons(){
     btnMedium.run();
     btnHard.run();
     if (mouseX>100 && mouseX<200 && mouseY>100 && mouseY<200 && mouseIsPressed){
-      loadBalls(3)
-      velX = random(-3,3)
-      velY = random(-3,3)
+      velX = random(-8,-5)
+      velY = random(-8,-5)
+      loadBalls(5)
       screenNumber++
     }
     if(mouseX>300 && mouseX<400 && mouseY>300 && mouseY<400 && mouseIsPressed){
-      loadBalls(5)
-      velX = random(-3,3)
-      velY = random(-3,3)
+      velX = random(-9,-5)
+      velY = random(-9,-5)
+      loadBalls(10)
       screenNumber++
     }
     if(mouseX>500 && mouseX<600 && mouseY>500 && mouseY<600 && mouseIsPressed){
-      loadBalls(10)
-      velX = random(-1,1)
-      velY = random(-1,1)
+      velX = random(-10,-5)
+      velY = random(-10,-5)
+      loadBalls(15)
       screenNumber++
     }
    }
@@ -70,7 +70,7 @@ function runPaddle(){
 
 function loadBalls(n){
   for(var i = 0; i < n; i++){
-    balls[i] = new Ball(random(width), random(height-500), velX, velY)
+    balls[i] = new Ball(random(width), random(height-500), velX, velY, 0)
   }
 }
 
