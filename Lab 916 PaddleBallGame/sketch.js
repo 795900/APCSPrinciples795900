@@ -8,7 +8,7 @@ var screenNumber = 1;
 var velX = 0
 var velY = 0
 var velLimit;
-var btnEasy, btnMedium, btnHard;
+var btnEasy, btnMedium, btnHard, btnRestart;
 
 function setup() {
   var cnv = createCanvas(800,800);
@@ -28,12 +28,16 @@ function draw() {
   if (screenNumber === 2){
     screen2()
   }
+  if (screenNumber === 3){
+    screen3()
+  }
   }
 
 function makeButtons(){
   btnEasy = new Button (100,100,"Easy",0,250,0)
   btnMedium = new Button (300,300,"Medium",255,255,0)
   btnHard = new Button (500,500,"Hard",255,0,0)
+  btnRestart = new Button (350,550,"Restart", 250, 128, 114)
 }
 
  function screen1(){
@@ -87,8 +91,20 @@ function runBalls(){
   text("Health: "+health,50,100);
   runPaddle();
   runBalls();
+  if (health === 0){
+    screenNumber++
+  }
  }
 
 function screen3(){
-
+  fill(20,20,20)
+  textSize(50)
+  text("You lose!",300,400)
+  text("Score: "+score, 300,450)
+  btnRestart.run();
+  if(mouseX>350 && mouseX<450 && mouseY>550 && mouseY<650 && mouseIsPressed){
+    screenNumber = 1
+    health = 3
+    score = 0
+}
 }

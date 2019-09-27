@@ -27,13 +27,13 @@ class Ball{
     if(this.loc.y>height){
       this.vel.y = -this.vel.y
     }
-     if(this.loc.y>paddle.loc.y&&paddle.loc.x<this.loc.x&&this.loc.x<paddle.loc.x+100&&this.vel.y>0&&this.loc.y<paddle.loc.y+50){
+     if(this.loc.y>paddle.loc.y&&paddle.loc.x<this.loc.x&&this.loc.x<paddle.loc.x+100&&this.vel.y>0&&this.loc.y<paddle.loc.y+45){
        this.vel.y = -this.vel.y
        score++
      }
      for(var i = balls.length-1; i>=0; i--){
-       if(balls[i].isColliding()){
-         append(balls,i)
+       if(balls[i].colliding()){
+         balls.splice(i,1)
          health--
        }
      }
@@ -47,8 +47,8 @@ class Ball{
       fill(this.clr);
       ellipse(this.loc.x, this.loc.y,20,20)
   }
-  isColliding(){
-    if(paddle.loc.x<this.loc.x&&this.loc.x<paddle.loc.x+100&&this.vel.y<0&&this.loc.y<paddle.loc.y+50&&this.loc.y>paddle.loc.y+20){
+  colliding(){
+    if(paddle.loc.x<this.loc.x&&this.loc.x<paddle.loc.x+100&&this.loc.y<paddle.loc.y+50&&this.loc.y>paddle.loc.y+20&&this.vel.y<0){
         return true
     }
   }
