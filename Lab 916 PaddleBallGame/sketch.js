@@ -14,7 +14,7 @@ function setup() {
   var cnv = createCanvas(800,800);
   cnv.position((windowWidth-width)/2, 30);
   loadPaddle();
-  if (screenNumber === 1){
+  if (screenNumber === 1){ //intro screen
     makeButtons();
     screen1();
 }
@@ -22,13 +22,13 @@ function setup() {
 
 function draw() {
   background(250,250,250,100)
-  if (screenNumber === 1){
+  if (screenNumber === 1){ //intro screen
     screen1()
   }
-  if (screenNumber === 2){
+  if (screenNumber === 2){ //play screen
     screen2()
   }
-  if (screenNumber === 3){
+  if (screenNumber === 3){ //"you lose" screen
     screen3()
   }
   }
@@ -44,19 +44,22 @@ function makeButtons(){
     btnEasy.run();
     btnMedium.run();
     btnHard.run();
-    if (mouseX>100 && mouseX<200 && mouseY>100 && mouseY<200 && mouseIsPressed){
+    text("Hit the ball with the top of the paddle to get points.", 50, 500)
+    text("If the ball hits the bottom of the paddle, you will lose a life, ", 50, 525)
+    text("and the ball will disappear. You have three lives.  Good luck.", 50, 550)
+    if (mouseX>100 && mouseX<200 && mouseY>100 && mouseY<200 && mouseIsPressed){ //easy button
       velX = random(-8,-5)
       velY = random(-8,-5)
       loadBalls(5)
       screenNumber++
     }
-    if(mouseX>300 && mouseX<400 && mouseY>300 && mouseY<400 && mouseIsPressed){
+    if(mouseX>300 && mouseX<400 && mouseY>300 && mouseY<400 && mouseIsPressed){ //medium button
       velX = random(-9,-5)
       velY = random(-9,-5)
       loadBalls(10)
       screenNumber++
     }
-    if(mouseX>500 && mouseX<600 && mouseY>500 && mouseY<600 && mouseIsPressed){
+    if(mouseX>500 && mouseX<600 && mouseY>500 && mouseY<600 && mouseIsPressed){ //hard button
       velX = random(-10,-5)
       velY = random(-10,-5)
       loadBalls(15)
@@ -91,7 +94,7 @@ function runBalls(){
   text("Health: "+health,50,100);
   runPaddle();
   runBalls();
-  if (health === 0){
+  if (health <= 0){
     screenNumber++
   }
  }
@@ -102,7 +105,7 @@ function screen3(){
   text("You lose!",300,400)
   text("Score: "+score, 300,450)
   btnRestart.run();
-  if(mouseX>350 && mouseX<450 && mouseY>550 && mouseY<650 && mouseIsPressed){
+  if(mouseX>350 && mouseX<450 && mouseY>550 && mouseY<650 && mouseIsPressed){ //restart button
     screenNumber = 1
     health = 3
     score = 0
