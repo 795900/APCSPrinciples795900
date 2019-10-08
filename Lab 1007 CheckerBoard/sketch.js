@@ -11,22 +11,28 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(250, 250, 250);
   fill(200, 30, 150);
+  loadSquares()
 }
 
 function loadSquares(){
   for (rowNum = 1; rowNum<=height/100; rowNum++){
     if (rowNum % 2 === 0){
-      for (i = 0; i < width - 7; i = i+2){
+      for (i = 0; i < width; i = i+2){
         squares[i] = new Square (squareX,squareY,250,0,0)
         squares[i] = new Square (squareX,squareY,20,20,20)
       }
     }
     if (rowNum % 2 === 1){
-
+      for (i = 0; i < width; i = i+2){
+        squares[i] = new Square (squareX,squareY,20,20,20)
+        squares[i] = new Square (squareX,squareY,250,0,0)
+      }
     }
   }
 }
 //  The draw function is called @ 30 fps
 function draw() {
-
+  for (var i = 0; i < squares.length; i++){
+    squares[i]
+  }
 }
