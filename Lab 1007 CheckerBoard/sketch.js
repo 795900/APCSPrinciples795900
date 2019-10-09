@@ -15,31 +15,23 @@ function setup() {
 }
 
 function loadSquares(){
-  for (rowNum = 1; rowNum<=height/100; rowNum++){
-    squareX = 0
-    squareY = 0
+  for (rowNum = 0; rowNum<=height/100; rowNum++){
     if (rowNum % 2 === 0){
       for (i = 0; i < width; i = i+2){
-        squares[i] = new Square (i*100,i*100,250,0,0)
-        squares[i+1] = new Square (100,100(i+1),20,20,20)
-        squareX += 100
-        squareY += 100
+        squares[i] = new Square (i*100,rowNum*100,250,0,0)
+        squares[i+1] = new Square (100*i+100,rowNum*100,20,20,20)
       }
-      for (var i = 0; i < squares.length; i++){
-        squares[i].render();
+      for (var n = 0; n < squares.length; n++){
+        squares[n].render();
       }
     }
     if (rowNum % 2 === 1){
-      squareX = 0
-      squareY = 0
       for (i = 0; i < width; i = i+2){
-        squares[i] = new Square (squareX,squareY,20,20,20)
-        squares[i+1] = new Square (squareX+100,squareY+100,250,0,0)
-        squareX += 100
-        squareY += 100
+        squares[i] = new Square (100*i,rowNum*100,20,20,20)
+        squares[i+1] = new Square (100*i+100,rowNum*100,250,0,0)
       }
-      for (var i = 0; i < squares.length; i++){
-        squares[i].render();
+      for (var n = 0; n < squares.length; n++){
+        squares[n].render();
       }
     }
   }
