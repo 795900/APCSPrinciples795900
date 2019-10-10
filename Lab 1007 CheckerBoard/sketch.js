@@ -2,8 +2,6 @@
 // 	1007
 //  This is a comment
 //  The setup function function is called once when your program begins
-var squareX = 0
-var squareY = 0
 var squares = []
 
 function setup() {
@@ -11,13 +9,13 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(250, 250, 250);
   fill(200, 30, 150);
-  loadSquares()
+  makeSquares()
 }
 
-function loadSquares(){
+function makeSquares(){
   for (rowNum = 0; rowNum<=height/100; rowNum++){
     if (rowNum % 2 === 0){
-      for (i = 0; i < width; i = i+2){
+      for (i = 0; i < width/100; i = i+2){
         squares[i] = new Square (i*100,rowNum*100,250,0,0)
         squares[i+1] = new Square (100*i+100,rowNum*100,20,20,20)
       }
@@ -26,7 +24,7 @@ function loadSquares(){
       }
     }
     if (rowNum % 2 === 1){
-      for (i = 0; i < width; i = i+2){
+      for (i = 0; i < width/100; i = i+2){
         squares[i] = new Square (100*i,rowNum*100,20,20,20)
         squares[i+1] = new Square (100*i+100,rowNum*100,250,0,0)
       }
