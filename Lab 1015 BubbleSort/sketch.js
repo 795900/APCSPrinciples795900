@@ -7,24 +7,26 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  var list = [2,6,4,10,4,50,6,7,1,7,0,3]
+  var listLength = 10
+  var list = []
+  for (i = 0; i = 10; i++){
+    list.push(random(100))
+  }
   for (i=0; i<list.length; i++) {
     for (j=0; j<list.length; j++){
-/* compare the two neighbors*/
     if (list[j+1] < list[j]) {
-/* swap a[j] and a[j+1]*/
-      var tmp = list[j];
-      list[j] = list[j+1];
-      list[j+1] = tmp;
+      swap(j);
   }
 }
 }
 console.log(list);
-fill (250,250,250)
-textSize(50)
-text(list, 150,400)
 }
 
+function swap(number){
+  var tmp = list[number];
+  list[number] = list[number+1];
+  list[number+1] = tmp;
+}
 //  The draw function is called @ 30 fps
 function draw() {
 
