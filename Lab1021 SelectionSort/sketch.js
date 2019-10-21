@@ -1,9 +1,9 @@
 //  Harry Kraus
-// 	1011 InsertionSort
+// 	1021 SelectionSort
 //  This is a comment
 //  The setup function function is called once when your program begins
-var swaps = 0
 var comparisons = 0
+var swaps = 0
 var listLength = 10
 var list = []
 function setup() {
@@ -14,27 +14,25 @@ function setup() {
   for (n = 0; n < listLength; n++){
     list.push(random(100))
   }
-  for (i=1; i<list.length; i++) {
-    for (j=i; j>0; j--){
-      comparisons++
-      if (list[j]<list[j-1]) {
-        swap(j)
+  for (var i = 0; i < list.length - 1; i++){
+      var index = i;
+      for (var j = i + 1; j < list.length; j++){
+        comparisons++
+        if (list[j] < list[index]){
+          index = j;
+        }
       }
-    }
-  }
+        var smallerNumber = list[index];
+        list[index] = list[i];
+        list[i] = smallerNumber;
+        swaps++
+        }
 //comparisons = 45
-//swaps = 21
+//swaps = 9
 console.log(list);
-console.log(comparisons)
-console.log(swaps)
+console.log(comparisons);
+console.log(swaps);
 }
-function swap(number){
-  var temp = list[number];
-  list[number] = list[number-1];
-  list[number-1] = temp;
-  swaps++
-}
-
 //  The draw function is called @ 30 fps
 function draw() {
 
