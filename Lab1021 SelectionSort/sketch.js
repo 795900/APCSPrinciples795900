@@ -4,15 +4,17 @@
 //  The setup function function is called once when your program begins
 var comparisons = 0
 var swaps = 0
-var listLength = 10
+var numRects = 10
 var list = []
+var millisecond = 0;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  for (n = 0; n < listLength; n++){
-    list.push(random(100))
+  millisecond = millis();
+  for (n = 0; n < width/numRects; n++){
+    (random(100))
   }
   for (var i = 0; i < list.length - 1; i++){
       var index = i;
@@ -32,6 +34,7 @@ function setup() {
 console.log(list);
 console.log(comparisons);
 console.log(swaps);
+console.log(millisecond)
 }
 //  The draw function is called @ 30 fps
 function draw() {
