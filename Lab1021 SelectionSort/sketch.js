@@ -4,7 +4,7 @@
 //  The setup function function is called once when your program begins
 var comparisons = 0
 var swaps = 0
-var numRects = 10
+var listLength = 10
 var list = []
 var millisecond = 0;
 function setup() {
@@ -13,8 +13,8 @@ function setup() {
   background(5, 5, 5);
   fill(200, 30, 150);
   millisecond = millis();
-  for (n = 0; n < width/numRects; n++){
-    (random(100))
+  for (n = 0; n < listLength; n++){
+    list.push(random(100))
   }
   for (var i = 0; i < list.length - 1; i++){
       var index = i;
