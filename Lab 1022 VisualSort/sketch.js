@@ -5,41 +5,49 @@
 var rectangles = []
 var numRects = 20
 var rectX = 0
+var horizLoc = []
 var heights = []
 function setup() {
+  frameRate(1);
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
   fill(200, 30, 150);
-  for (n = 0; n < width/numRects; n++){
+  for (n = 0; n < numRects; n++){
     var rectHeight = random(10,height)
     rectangles[n] = new Rectangle(rectHeight,rectX,width/numRects)
     heights.push(rectHeight)
+    horizLoc.push(rectX)
     rectX = rectX+(width/numRects)
   }
-  for (n = 0; n < width/numRects; n++){
+  for (n = 0; n < numRects; n++){
     rectangles[n].render();
   }
-  for (i=0; i<heights.length; i++) {
-    for (j=0; j<heights.length; j++){
-    if (heights[j+1] < heights[j]) {
-      swap(j);
-  }
-}
-}
 //comparisons = 45
 //swaps = 33
 console.log(heights);
 }
 
-function swap(number){
-  var tmp = heights[number];
-  rectangles[number] = new Rectangle(heights[number+1],rectX,width/numRects);
-  rectangles[number+1] = new Rectangle(heights[number],rectX,width/numRects);
-  rectangles[number].render()
-  rectangles[number+1].render()
-}
 //  The draw function is called @ 30 fps
 function draw() {
+  for (i=0; i<heights.length; i++) {
+    for (j=0; j<heights.length; j++){
+    if (heights[j+1] < heights[j]) {
+      swap(j);
+  }
+  }
+  }
+}
 
+
+function swap(number){
+  background(5,5,5)
+  var tmp = heights[number];
+  rectangles[number] = new Rectangle(heights[number+1],horizLoc[number],width/numRects)
+  rectangles[number+1] = new Rectangle(heights[number],horizLoc[number+1],width/numRects)
+  for (n = 0; n < numRects; n++){
+    rectangles[n].render();
+  }
+  heights[number] = heights[number+1]
+  heights[number+1] = tmp
 }
