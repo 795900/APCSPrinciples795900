@@ -1,12 +1,10 @@
 //  Harry Kraus
-// 	1011 BubbleSort
+// 	1023 VisualSort
 //  This is a comment
 //  The setup function function is called once when your program begins
-var comps = 0
-rect = []
+var rectangles = []
 var numRects = 20
-var swaps = 0
-var tracker = 0
+var rectX = 0
 var heights = []
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -14,14 +12,16 @@ function setup() {
   background(5, 5, 5);
   fill(200, 30, 150);
   for (n = 0; n < width/numRects; n++){
-    var rectHeight = random(height)
-    rect = new Rectangle(rectHeight,tracker,width/numRects)
+    var rectHeight = random(10,height)
+    rectangles[n] = new Rectangle(rectHeight,rectX,width/numRects)
     heights.push(rectHeight)
+    rectX = rectX+(width/numRects)
   }
-  rect.render()
+  for (n = 0; n < width/numRects; n++){
+    rectangles[n].render();
+  }
   for (i=0; i<heights.length; i++) {
     for (j=0; j<heights.length; j++){
-    comps++
     if (heights[j+1] < heights[j]) {
       swap(j);
   }
@@ -30,15 +30,14 @@ function setup() {
 //comparisons = 45
 //swaps = 33
 console.log(heights);
-console.log(comps);
-console.log(swaps);
 }
 
 function swap(number){
   var tmp = heights[number];
-  heights[number] = heights[number+1];
-  heights[number+1] = tmp;
-  swaps++
+  rectangles[number] = new Rectangle(heights[number+1],rectX,width/numRects);
+  rectangles[number+1] = new Rectangle(heights[number],rectX,width/numRects);
+  rectangles[number].render()
+  rectangles[number+1].render()
 }
 //  The draw function is called @ 30 fps
 function draw() {
