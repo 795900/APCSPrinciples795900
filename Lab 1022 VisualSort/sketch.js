@@ -25,29 +25,30 @@ function setup() {
   }
 //comparisons = 45
 //swaps = 33
-console.log(heights);
 }
 
 //  The draw function is called @ 30 fps
-function draw() {
+
+  function draw() {
+    swap()
+  }
+
+function swap(){
   for (i=0; i<heights.length; i++) {
-    for (j=0; j<heights.length; j++){
-    if (heights[j+1] < heights[j]) {
-      swap(j);
-  }
-  }
-  }
+    for (number=0; number<heights.length; number++){
+      if (heights[number+1] < heights[number]) {
+        background(5,5,5)
+        var tmp = heights[number];
+        rectangles[number] = new Rectangle(heights[number+1],horizLoc[number],width/numRects)
+        rectangles[number+1] = new Rectangle(heights[number],horizLoc[number+1],width/numRects)
+        for (n = 0; n < numRects; n++){
+          rectangles[n].render();
+        }
+        heights[number] = heights[number+1]
+        heights[number+1] = tmp
+        console.log(heights)
+
 }
-
-
-function swap(number){
-  background(5,5,5)
-  var tmp = heights[number];
-  rectangles[number] = new Rectangle(heights[number+1],horizLoc[number],width/numRects)
-  rectangles[number+1] = new Rectangle(heights[number],horizLoc[number+1],width/numRects)
-  for (n = 0; n < numRects; n++){
-    rectangles[n].render();
-  }
-  heights[number] = heights[number+1]
-  heights[number+1] = tmp
+}
+}
 }
