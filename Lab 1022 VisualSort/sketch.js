@@ -3,12 +3,12 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var rectangles = []
-var numRects = 20
+var numRects = 300
 var rectX = 0
 var horizLoc = []
 var heights = []
 function setup() {
-  frameRate(1);
+  frameRate(40);
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
@@ -28,27 +28,19 @@ function setup() {
 }
 
 //  The draw function is called @ 30 fps
+function draw() {
+  for (j=0; j<heights.length; j++){
+          background(5,5,5)
+          for (n = 0; n < numRects; n++){
+            rectangles[n].render();
+          }
+    if (heights[j+1] < heights[j]) {
+      var tmp = heights[j];
+      rectangles[j] = new Rectangle(heights[j+1],horizLoc[j],width/numRects)
+      rectangles[j+1] = new Rectangle(heights[j],horizLoc[j+1],width/numRects)
 
-  function draw() {
-    swap()
+      heights[j] = heights[j+1]
+      heights[j+1] = tmp
   }
-
-function swap(){
-  for (i=0; i<heights.length; i++) {
-    for (number=0; number<heights.length; number++){
-      if (heights[number+1] < heights[number]) {
-        background(5,5,5)
-        var tmp = heights[number];
-        rectangles[number] = new Rectangle(heights[number+1],horizLoc[number],width/numRects)
-        rectangles[number+1] = new Rectangle(heights[number],horizLoc[number+1],width/numRects)
-        for (n = 0; n < numRects; n++){
-          rectangles[n].render();
-        }
-        heights[number] = heights[number+1]
-        heights[number+1] = tmp
-        console.log(heights)
-
-}
-}
 }
 }
