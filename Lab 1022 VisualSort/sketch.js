@@ -3,12 +3,12 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var rectangles = []
-var numRects = 300
+var numRects = 100
 var rectX = 0
 var horizLoc = []
 var heights = []
 function setup() {
-  frameRate(40);
+  frameRate(20);
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
