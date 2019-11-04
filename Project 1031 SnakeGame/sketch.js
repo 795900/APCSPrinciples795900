@@ -2,13 +2,11 @@
 // 	Date or version number
 //  This is a comment
 //  The setup function function is called once when your program begins
-
+var body = []
 var food
 var head
 var xSquare
 var ySquare
-var foodSquare
-var foodSquare
 function setup() {
   frameRate(15)
   var cnv = createCanvas(800, 800);
@@ -17,10 +15,9 @@ function setup() {
   fill(200, 30, 150);
   xSquare = width/40
   ySquare = height/40
-  foodSquareX = random(width/20)
-  foodSquareY = random(width/20)
+  // foodSquareX = round(random(width/20))
+  // foodSquareY = round(random(width/20))
   loadFood()
-  runFood()
 }
 
 
@@ -31,8 +28,7 @@ function draw() {
   loadHead();
   runHead();
   moveHead();
-  loadFood()
-  runFood()
+  runFood
 }
 
 function loadHead(){
@@ -59,9 +55,24 @@ function moveHead(){
 }
 
 function loadFood(){
-  food = new Food()
+  food = new Food(round(random(width/20-1)), round(random(width/20-1)))
 }
 
 function runFood(){
-  food.render();
-}
+    food.run();
+  }
+
+function loadBody(){
+  if (body.length === 0 && keyCode === UP_ARROW && foodEaten()){
+      body = new Body(xSquare, ySquare+1)
+  }
+  if (body.length === 0 && keyCode === DOWN_ARROW && foodEaten()){
+      body = new Body(xSquare, ySquare-1)
+  }
+  if (body.length === 0 && keyCode === RIGHT_ARROW && foodEaten()){
+      body = new Body(xSquare-1, ySquare)
+  }
+  if (body.length === 0 && keyCode === LEFT_ARROW && foodEaten()){
+      body = new Body(xSquare+1, ySquare)
+    }
+  }

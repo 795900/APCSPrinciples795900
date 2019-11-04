@@ -1,8 +1,23 @@
 class Food{
+  constructor(x,y){
+    this.foodX = x
+    this.foodY = y
+  }
+
+
+  run(){
+    this.update()
+    this.render()
+  }
+
+  update(){
+    if (xSquare === this.foodX && this.foodY === ySquare){
+      this.foodX = round(random(width/20))
+      this.foodY = round(random(width/20))
+    }
+  }
   render(){
-    var foodX = random(width/40)
-    var foodY = random(width/40)
     fill(250,0,0)
-    rect(foodX*20,foodY*20,20,20)
+    rect(this.foodX*20, this.foodY*20, 20, 20)
   }
 }
