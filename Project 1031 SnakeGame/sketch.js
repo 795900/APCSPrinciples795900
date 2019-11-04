@@ -3,9 +3,12 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 
+var food
 var head
 var xSquare
 var ySquare
+var foodSquare
+var foodSquare
 function setup() {
   frameRate(15)
   var cnv = createCanvas(800, 800);
@@ -14,6 +17,10 @@ function setup() {
   fill(200, 30, 150);
   xSquare = width/40
   ySquare = height/40
+  foodSquareX = random(width/20)
+  foodSquareY = random(width/20)
+  loadFood()
+  runFood()
 }
 
 
@@ -24,6 +31,8 @@ function draw() {
   loadHead();
   runHead();
   moveHead();
+  loadFood()
+  runFood()
 }
 
 function loadHead(){
@@ -47,4 +56,12 @@ function moveHead(){
   if(keyCode === LEFT_ARROW){
     xSquare--
   }
+}
+
+function loadFood(){
+  food = new Food()
+}
+
+function runFood(){
+  food.render();
 }

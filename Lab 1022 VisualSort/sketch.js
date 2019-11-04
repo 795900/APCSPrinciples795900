@@ -23,8 +23,6 @@ function setup() {
   for (n = 0; n < numRects; n++){
     rectangles[n].render();
   }
-//comparisons = 45
-//swaps = 33
 }
 
 //  The draw function is called @ 30 fps
