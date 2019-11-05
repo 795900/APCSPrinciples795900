@@ -12,8 +12,8 @@ class Food{
 
   update(){
     if (xSquare === this.foodX && this.foodY === ySquare){
-      this.foodX = round(random(width/20))
-      this.foodY = round(random(width/20))
+      this.foodX = round(random(width/20-1))
+      this.foodY = round(random(width/20-1))
     }
   }
   render(){
