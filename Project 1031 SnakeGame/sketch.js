@@ -29,6 +29,7 @@ function draw() {
   runHead();
   moveHead();
   runFood();
+  loadBody();
 }
 
 function loadHead(){
@@ -63,16 +64,13 @@ function runFood(){
   }
 
 function loadBody(){
-  if (keyCode === UP_ARROW && xSquare === food.foodX && food.foodY === ySquare){
-      body = new Body(xSquare, ySquare+1)
+  if(xSquare === food.x && ySquare === food.y){
+    console.log("working")
   }
-  if (keyCode === DOWN_ARROW && xSquare === food.foodX && food.foodY === ySquarexSquare === this.foodX && this.foodY === ySquarexSquare === this.foodX && this.foodY === ySquare){
-      body = new Body(xSquare, ySquare-1)
-  }
-  if (keyCode === RIGHT_ARROW && xSquare === food.foodX && food.foodY === ySquarexSquare === this.foodX && this.foodY === ySquare){
-      body = new Body(xSquare-1, ySquare)
-  }
-  if (keyCode === LEFT_ARROW && xSquare === food.foodX && food.foodY === ySquare){
-      body = new Body(xSquare+1, ySquare)
+}
+
+  function runBody(){
+    for (n = 0; n<=body.length; n++){
+      body[n].render();
     }
   }
