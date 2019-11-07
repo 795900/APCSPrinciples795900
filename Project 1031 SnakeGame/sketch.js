@@ -28,8 +28,9 @@ function draw() {
   loadHead();
   runHead();
   moveHead();
-  runFood();
   loadBody();
+  runBody()
+  runFood();
 }
 
 function loadHead(){
@@ -65,12 +66,12 @@ function runFood(){
 
 function loadBody(){
   if(xSquare === food.x && ySquare === food.y){
-    console.log("working")
+    body[0] = new Body(xSquare*20, ySquare*20)
   }
 }
 
   function runBody(){
-    for (n = 0; n<=body.length; n++){
-      body[n].render();
+    if (body.length>=1){
+      body[0].render()
     }
   }
