@@ -44,15 +44,27 @@ function runHead(){
 function moveHead(){
   if (keyCode === UP_ARROW){
     ySquare--
+    if (body.length>=1){
+      body[0] = new Body(xSquare*20, ySquare*20)
+    }
   }
   if (keyCode === DOWN_ARROW){
     ySquare++
+    if (body.length>=1){
+      body[0] = new Body(xSquare*20, ySquare*20)
+    }
   }
   if (keyCode === RIGHT_ARROW){
     xSquare++
+    if (body.length>=1){
+      body[0] = new Body(xSquare*20, ySquare*20)
+    }
   }
   if(keyCode === LEFT_ARROW){
     xSquare--
+    if (body.length>=1){
+      body[0] = new Body(xSquare*20, ySquare*20)
+    }
   }
 }
 
@@ -66,21 +78,20 @@ function runFood(){
 
 function loadBody(){
   if(xSquare === food.x && ySquare === food.y){
-    body[0] = new Body(xSquare*20, ySquare*20)
+    body[0] = new Body(head.x, head.y)
     for (i = body.length; i>0; i--){
-      body[i] = new Body(body[i-1].x, body[i-1].y)
+      body[i] = new Body(xSquare*20, ySquare*20)
     }
   }
   for (i = body.length-1; i>=1; i--){
     body[i] = new Body(body[i-1].x, body[i-1].y)
   }
-  if (body.length>=1){
-    body[0] = new Body(xSquare*20, ySquare*20)
-  }
 }
 
   function runBody(){
     if (body.length>=1){
-      body[0].render()
+      for (i = body.length-1; i >= 0; i--){
+        body[i].render();
+      }
     }
   }
