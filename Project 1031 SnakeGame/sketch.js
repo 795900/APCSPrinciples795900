@@ -2,6 +2,7 @@
 // 	Date or version number
 //  This is a comment
 //  The setup function function is called once when your program begins
+var screenNumber = 1
 var body = []
 var food
 var head
@@ -44,27 +45,15 @@ function runHead(){
 function moveHead(){
   if (keyCode === UP_ARROW){
     ySquare--
-    if (body.length>=1){
-      body[0] = new Body(xSquare*20, ySquare*20)
-    }
   }
   if (keyCode === DOWN_ARROW){
     ySquare++
-    if (body.length>=1){
-      body[0] = new Body(xSquare*20, ySquare*20)
-    }
   }
   if (keyCode === RIGHT_ARROW){
     xSquare++
-    if (body.length>=1){
-      body[0] = new Body(xSquare*20, ySquare*20)
-    }
   }
   if(keyCode === LEFT_ARROW){
     xSquare--
-    if (body.length>=1){
-      body[0] = new Body(xSquare*20, ySquare*20)
-    }
   }
 }
 
@@ -78,13 +67,18 @@ function runFood(){
 
 function loadBody(){
   if(xSquare === food.x && ySquare === food.y){
-    body[0] = new Body(head.x, head.y)
-    for (i = body.length; i>0; i--){
+    body[0] = new Body (head.x, head.y)
+    for (i = body.length; i>=0; i--){
       body[i] = new Body(xSquare*20, ySquare*20)
     }
   }
-  for (i = body.length-1; i>=1; i--){
-    body[i] = new Body(body[i-1].x, body[i-1].y)
+  for (i = body.length-1; i>=0; i--){
+    if (i >= 1){
+      body[i] = new Body(body[i-1].x, body[i-1].y)
+    }
+    if (i === 0){
+      body[i] = new Body(head.x, head.y)
+    }
   }
 }
 
