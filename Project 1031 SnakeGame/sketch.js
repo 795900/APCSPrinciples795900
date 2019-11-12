@@ -15,8 +15,6 @@ function setup() {
   fill(200, 30, 150);
   xSquare = width/40
   ySquare = height/40
-  // foodSquareX = round(random(width/20))
-  // foodSquareY = round(random(width/20))
   loadFood()
 }
 
