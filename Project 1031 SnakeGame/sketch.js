@@ -3,6 +3,8 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var screenNumber = 1
+var buttonX
+var buttonY
 var body = []
 var food
 var head
@@ -25,6 +27,31 @@ function setup() {
 //  The draw function is called @ 30 fps
 
 function draw() {
+  if (screenNumber === 1){
+    screen1();
+  }
+  if (screenNumber === 2){
+    screen2();
+  }
+}
+
+function screen1(){
+  textSize(50)
+  fill(0,250,0)
+  text("Snake Game", 250,250)
+  fill (250,250,250)
+  buttonX = 300
+  buttonY = 500
+  rect(300, 500, 200, 200)
+  fill(0,0,0)
+  textSize(32)
+  text("Play", 375, 600)
+  if (mouseX>300 && mouseX<500 && mouseY>500 && mouseY<700 && mouseIsPressed){
+    screenNumber++
+  }
+}
+
+function screen2(){
   background(5,5,5)
   loadHead();
   runHead();
@@ -33,13 +60,12 @@ function draw() {
   runBody()
   runFood();
 }
-
 function loadHead(){
   head = new Head(xSquare*20, ySquare*20);
 }
 
 function runHead(){
-  head.render();
+  head.run();
 }
 
 function moveHead(){
