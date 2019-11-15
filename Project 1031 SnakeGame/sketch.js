@@ -31,6 +31,9 @@ function draw() {
   if (screenNumber === 2){
     screen2();
   }
+  if (screenNumber === 3){
+    screen3();
+  }
 }
 
 function screen1(){
@@ -112,4 +115,8 @@ function loadBody(){
         body[i].render();
       }
     }
+  }
+
+  function screen3(){
+    text("Game Over", 350, 350)
   }
