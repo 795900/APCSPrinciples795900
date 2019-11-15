@@ -7,7 +7,7 @@ class Head{
   checkEdges(){
     if (body.length>=1){
       for (i = body.length-1; i>=0; i--){
-        if (this.x === body[i].x && this.y === body[i].y){
+        if (this.x === body[i].x && this.y === body[i].y ){
           if (this.x != body[1].x || this.y != body[1].y){
           screenNumber++
           }

@@ -3,6 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var screenNumber = 1
+var score = 0
 var buttonX
 var buttonY
 var body = []
@@ -11,7 +12,7 @@ var head
 var xSquare
 var ySquare
 function setup() {
-  frameRate(15)
+  frameRate(20)
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
@@ -26,6 +27,7 @@ function setup() {
 
 function draw() {
   if (screenNumber === 1){
+    background(5,5,5)
     screen1();
   }
   if (screenNumber === 2){
@@ -37,6 +39,7 @@ function draw() {
 }
 
 function screen1(){
+  score = 0
   textSize(50)
   fill(0,250,0)
   text("Snake Game", 250,250)
@@ -94,6 +97,7 @@ function runFood(){
 
 function loadBody(){
   if(xSquare === food.x && ySquare === food.y){
+    score++
     body[0] = new Body (head.x, head.y)
     for (i = body.length; i>=0; i--){
       body[i] = new Body(xSquare*20, ySquare*20)
@@ -118,5 +122,18 @@ function loadBody(){
   }
 
   function screen3(){
-    text("Game Over", 350, 350)
+    fill(250,250,250)
+    text("Game Over", 350, 600)
+    text("Score: " + score, 350,500)
+    fill(250,250,250)
+    rect(300, 100, 200, 200)
+    fill(0,0,0)
+    textSize(32)
+    text("Restart", 375, 200)
+    if (mouseX>300 && mouseX<500 && mouseY>100 && mouseY<300 && mouseIsPressed){
+      screenNumber = 1
+      body = []
+      keyCode = CONTROL
+      setup()
+    }
   }
