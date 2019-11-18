@@ -1,5 +1,5 @@
-//  Your Name
-// 	Date or version number
+//  Harry Kraus
+// 	1118
 //  This is a comment
 //  The setup function function is called once when your program begins
 var screenNumber = 1
@@ -76,15 +76,16 @@ function moveHead(){
   if (keyCode === UP_ARROW){
     ySquare--
   }
-  if (keyCode === DOWN_ARROW){
+  else if (keyCode === DOWN_ARROW){
     ySquare++
   }
-  if (keyCode === RIGHT_ARROW){
+  else if (keyCode === RIGHT_ARROW){
     xSquare++
   }
-  if(keyCode === LEFT_ARROW){
+  else if(keyCode === LEFT_ARROW){
     xSquare--
   }
+
 }
 
 function loadFood(){

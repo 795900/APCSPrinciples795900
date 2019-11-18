@@ -9,12 +9,12 @@ class Head{
       for (i = body.length-1; i>=0; i--){
         if (this.x === body[i].x && this.y === body[i].y ){
           if (this.x != body[1].x || this.y != body[1].y){
-          screenNumber++
+              screenNumber++
+            }
           }
         }
       }
-    }
-    if (this.x > width || this.x < 0 || this.y > height || this.y < 0){
+    if (this.x >= width || this.x < 0 || this.y >= height || this.y < 0){
       screenNumber++
     }
   }
