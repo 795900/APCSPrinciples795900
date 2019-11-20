@@ -11,13 +11,12 @@ class Food{
   }
 
   update(){
-    if (xSquare === this.x && this.y === ySquare){
+    if (xSquare === this.x && this.y === ySquare){ //changes the location of the food when it is eaten
       this.x = round(random(width/20-1))
       this.y = round(random(width/20-1))
     }
   }
   render(){
-    fill(250,0,0)
-    image(img, this.x*20, this.y*20)
+    image(img, this.x*20, this.y*20, 20, 20)
   }
 }

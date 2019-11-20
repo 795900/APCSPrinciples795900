@@ -16,7 +16,7 @@ function setup() {
   frameRate(20)
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(5, 5, 5);
+  background(250, 250, 250);
   fill(200, 30, 150);
   img = loadImage('banana.png')
   xSquare = width/40
@@ -29,7 +29,7 @@ function setup() {
 
 function draw() {
   if (screenNumber === 1){
-    background(5,5,5)
+    background(250, 250, 250)
     screen1();
   }
   if (screenNumber === 2){
@@ -40,16 +40,16 @@ function draw() {
   }
 }
 
-function screen1(){
+function screen1(){ //opening screen
   score = 0
   textSize(50)
-  fill(0,250,0)
+  fill(5,5,5)
   text("Snake Game", 250,250)
-  fill (250,250,250)
+  fill (5,5,5)
   buttonX = 300
   buttonY = 500
   rect(300, 500, 200, 200)
-  fill(0,0,0)
+  fill(250, 250, 250)
   textSize(32)
   text("Play", 375, 600)
   if (mouseX>300 && mouseX<500 && mouseY>500 && mouseY<700 && mouseIsPressed){
@@ -57,8 +57,8 @@ function screen1(){
   }
 }
 
-function screen2(){
-  background(5,5,5)
+function screen2(){ //gameplay
+  background(250, 250, 250)
   loadHead();
   runHead();
   moveHead();
@@ -124,13 +124,13 @@ function loadBody(){
     }
   }
 
-  function screen3(){
-    fill(250,250,250)
+  function screen3(){ //game over and restart
+    fill(5,5,5)
     text("Game Over", 350, 600)
     text("Score: " + score, 350,500)
-    fill(250,250,250)
+    fill(5,5,5)
     rect(300, 100, 200, 200)
-    fill(0,0,0)
+    fill(250, 250, 250)
     textSize(32)
     text("Restart", 375, 200)
     if (mouseX>300 && mouseX<500 && mouseY>100 && mouseY<300 && mouseIsPressed){
