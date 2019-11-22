@@ -19,7 +19,7 @@ function setup() {
   background(250, 250, 250);
   fill(200, 30, 150);
   img = loadImage('banana.png')
-  xSquare = width/40
+  xSquare = width/40 //creation of grid
   ySquare = height/40
   loadFood()
 }
@@ -44,15 +44,15 @@ function screen1(){ //opening screen
   score = 0
   textSize(50)
   fill(5,5,5)
-  text("Snake Game", 250,250)
+  text("Snake Game", 250,250) //game title
   fill (5,5,5)
   buttonX = 300
   buttonY = 500
-  rect(300, 500, 200, 200)
+  rect(300, 500, 200, 200) //button creation
   fill(250, 250, 250)
   textSize(32)
-  text("Play", 375, 600)
-  if (mouseX>300 && mouseX<500 && mouseY>500 && mouseY<700 && mouseIsPressed){
+  text("Play", 375, 600) //play button
+  if (mouseX>300 && mouseX<500 && mouseY>500 && mouseY<700 && mouseIsPressed){ //if the play button is clicked
     screenNumber++
   }
 }
@@ -75,38 +75,38 @@ function runHead(){
 }
 
 function moveHead(){
-  if (keyCode === UP_ARROW){
+  if (keyCode === UP_ARROW){ //move snake up
     ySquare--
   }
-  else if (keyCode === DOWN_ARROW){
+  else if (keyCode === DOWN_ARROW){ //move snake down
     ySquare++
   }
-  else if (keyCode === RIGHT_ARROW){
+  else if (keyCode === RIGHT_ARROW){ //move snake to the right
     xSquare++
   }
-  else if(keyCode === LEFT_ARROW){
+  else if(keyCode === LEFT_ARROW){ //move snake to the left
     xSquare--
   }
 
 }
 
-function loadFood(){
+function loadFood(){ //create food
   food = new Food(round(random(width/20-1)), round(random(width/20-1)))
 }
 
-function runFood(){
+function runFood(){ //run food
     food.run();
   }
 
 function loadBody(){
-  if(xSquare === food.x && ySquare === food.y){
+  if(xSquare === food.x && ySquare === food.y){ //create body segments
     score++
     body[0] = new Body (head.x, head.y)
     for (i = body.length; i>=0; i--){
       body[i] = new Body(xSquare*20, ySquare*20)
     }
   }
-  for (i = body.length-1; i>=0; i--){
+  for (i = body.length-1; i>=0; i--){ //move segments
     if (i >= 1){
       body[i] = new Body(body[i-1].x, body[i-1].y)
     }
@@ -116,7 +116,7 @@ function loadBody(){
   }
 }
 
-  function runBody(){
+  function runBody(){ //run segments
     if (body.length>=1){
       for (i = body.length-1; i >= 0; i--){
         body[i].render();
