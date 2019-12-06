@@ -28,19 +28,21 @@ class Ship{
   }
 
   update(){
-    var distToMainBall;
-      distToMainBall = this.loc.dist(planet.loc)
-        this.acc = p5.Vector.sub(planet.loc, this.loc);
-        this.acc.normalize();
-        this.acc.mult(0.1)
+    var distToPlanet;
+    distToPlanet = this.loc.dist(planet.loc)
+    if (distToPlanet != 0){
+      this.acc = p5.Vector.sub(planet.loc, this.loc);
+      this.acc.normalize();
+      this.acc.mult(0.1)
+    }
+    this.vel.limit(5)
     this.vel.add(this.acc)
     this.loc.add(this.vel);
-    this.vel.limit(5)
   }
 
   render(){
     fill(this.clr)
-    this.angle = this.vel.heading()
+    this.angle = this.vel.heading() + 360
     push();
     translate(this.loc.x, this.loc.y);
     rotate(this.angle);
