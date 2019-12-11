@@ -3,7 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var balls = []
-var numBalls = 50
+var numBalls = 3
 var ballX = 0
 var ballLoc = []
 var reds = []
@@ -14,7 +14,7 @@ function setup() {
   background(5, 5, 5);
   fill(200, 30, 150);
   for (n = 0; n < numBalls; n++){
-    var numRed = random(255)
+    var numRed = random(100, 255)
     balls[n] = new Ball(width/numBalls,numRed,ballX)
     reds.push(numRed)
     ballLoc.push(ballX)
